@@ -108,6 +108,9 @@ class GdipTooltip
 		; bottom border
 		this.window.FillRectangle(this.borderBrush, new this.gdip.Point(0 + renderingOffset, textAreaHeight - this.borderSize.height), new gdip.Size(textAreaWidth - renderingOffset, this.borderSize.height))
 		
+		console.log(this.borderBrush)
+		console.log(this.borderBrushInner)
+		
 		options := {}
 		options.font	:= "Consolas"
 		options.brush	:= this.fontBrush
@@ -156,7 +159,7 @@ class GdipTooltip
 			_g := this.ChangeLuminosity(this.borderBrush.Color.g, luminosityFactor)
 			_b := this.ChangeLuminosity(this.borderBrush.Color.b, luminosityFactor)
 			_a := this.borderBrush.Color.a
-			this.borderBrushInner := new gdip.Brush(_a, _r, _g, _b)			
+			this.borderBrushInner := new gdip.Brush(this.ConvertColorToARGBhex([_a, _r, _g, _b]))		
 		}
 	}	
 	
